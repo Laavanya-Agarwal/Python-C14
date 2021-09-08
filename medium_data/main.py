@@ -5,7 +5,7 @@ import random
 import pandas as pd
 import csv
 
-df = pd.read_csv("medium_data.csv")
+df = pd.read_csv("data.csv")
 data = df["reading_time"].tolist()
 fig = ff.create_distplot([data], ['reading_time'], show_hist = False)
 fig.show()
@@ -31,9 +31,14 @@ def mean():
     fig = ff.create_distplot([df], ["reading_time"], show_hist=False)
     fig.add_trace(go.Scatter(x=[mean, mean], y=[0, 1], mode="lines", name="MEAN"))
     fig.show()
-    
-    mean = statistics.mean(mean_list)
-    print("Population mean: ",mean )
+
 mean()
 population_mean = statistics.mean(data)
-print("Sampling mean: ", population_mean)
+print("Population mean: ", population_mean )
+mean = statistics.mean(mean_list)
+print("Sampling mean: ", mean)
+
+population_sd = statistics.stdev(data)
+print("Population SD: ", population_sd )
+sd = statistics.stdev(mean_list)
+print("Sampling SD: ", sd)
